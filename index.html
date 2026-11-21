@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ArchDioramas Free Plans</title>
+<meta name="description" content="Free printable plans, laser files and STL models from the ArchDioramas YouTube channel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+/* Layout idea: a drafting sheet. Fine grid paper, ink lines, dimension marks; MDF-wood accent from the laser-cut builds. */
+:root{
+  --paper:#EDECE8;
+  --sheet:#F8F7F4;
+  --ink:#1F2326;
+  --muted:#5E6468;
+  --line:#CFCDC6;
+  --wood:#A8723F;
+  --wood-ink:#FFFFFF;
+  --blue:#2D5B8A;
+  --display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#16191C;--sheet:#1E2226;--ink:#ECEAE4;--muted:#A4A9AD;--line:#343A3F;
+    --wood:#D29A60;--wood-ink:#1A1410;--blue:#7FA9D6;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16191C;--sheet:#1E2226;--ink:#ECEAE4;--muted:#A4A9AD;--line:#343A3F;
+  --wood:#D29A60;--wood-ink:#1A1410;--blue:#7FA9D6;color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{
+  margin:0;background-color:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:32px 32px;background-attachment:fixed;
+}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--display);line-height:1.1;text-wrap:balance;margin:0}
+.mono{font-family:var(--mono)}
+
+/* header */
+header.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;flex-wrap:wrap}
+.logo{display:flex;align-items:baseline;gap:6px;text-decoration:none}
+.logo .a{font-family:var(--display);font-weight:500;font-size:22px;letter-spacing:.02em}
+.logo .b{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:.14em}
+nav.links{display:flex;gap:20px;flex-wrap:wrap;font-size:15px}
+nav.links a{text-decoration:none;color:var(--muted)}
+nav.links a:hover{color:var(--ink)}
+
+/* hero */
+.hero{padding:64px 0 40px}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.tag{font-family:var(--mono);font-size:13px;color:var(--blue);letter-spacing:.04em}
+.hero h1{font-size:clamp(36px,5.4vw,60px);font-weight:800;margin:14px 0 18px;letter-spacing:-.01em}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:56ch;margin:0 0 28px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px var(--body);padding:12px 20px;border-radius:4px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);text-decoration:none;cursor:pointer}
+.btn:hover{opacity:.88}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.wood{background:var(--wood);border-color:var(--wood);color:var(--wood-ink)}
+.hero-art{background:var(--sheet);border:1px solid var(--line);padding:18px;position:relative}
+.hero-art svg{width:100%;height:auto;display:block}
+.hero-art .cap{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--muted);border-top:1px solid var(--line);margin-top:10px;padding-top:8px}
+
+/* section heads */
+section.block{padding:56px 0}
+.head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:28px;border-bottom:2px solid var(--ink);padding-bottom:14px}
+.head h2{font-size:clamp(28px,3.6vw,40px);font-weight:800}
+.head p{margin:0;color:var(--muted);max-width:48ch}
+
+/* plan cards */
+.plans{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.card{background:var(--sheet);border:1px solid var(--line);display:flex;flex-direction:column}
+.card .thumb{aspect-ratio:4/3;border-bottom:1px solid var(--line);display:grid;place-items:center;padding:16px;position:relative}
+.card .thumb svg{width:82%;height:auto}
+.card .scale{position:absolute;top:10px;left:10px;font-family:var(--mono);font-size:12px;background:var(--paper);border:1px solid var(--line);padding:2px 8px}
+.card .example{position:absolute;top:10px;right:10px;font-family:var(--mono);font-size:11px;color:var(--wood);border:1px dashed var(--wood);padding:2px 6px}
+.card .body{padding:18px;display:flex;flex-direction:column;gap:12px;flex:1}
+.card h3{font-size:21px;font-weight:700}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font-family:var(--mono);font-size:12px;border:1px solid var(--line);padding:2px 8px;border-radius:2px}
+.card .actions{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-top:auto;flex-wrap:wrap}
+.card .actions a.watch{font-size:14px;color:var(--blue)}
+
+/* support */
+.support{background:var(--sheet);border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:0}
+.support > div{padding:32px}
+.support > div + div{border-left:1px solid var(--line)}
+.support h3{font-size:24px;font-weight:700;margin-bottom:8px}
+.support p{color:var(--muted);margin:0 0 20px}
+.amounts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.amounts span{font-family:var(--mono);font-size:14px;border:1px solid var(--line);padding:6px 12px}
+.tabs{display:flex;gap:0;border:1px solid var(--line);width:max-content;margin-bottom:16px}
+.tabs button{font:500 14px var(--body);background:transparent;color:var(--muted);border:0;padding:8px 16px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper)}
+.wallet{display:grid;grid-template-columns:132px 1fr;gap:18px;align-items:start}
+.qr{width:132px;height:132px;background:#fff;padding:6px;border:1px solid var(--line)}
+.qr img,.qr canvas{width:100%!important;height:100%!important}
+.addr{font-family:var(--mono);font-size:13px;word-break:break-all;background:var(--paper);border:1px solid var(--line);padding:10px;margin:0 0 10px}
+.net{font-size:13px;color:var(--wood);margin:10px 0 0}
+.copy{font:600 14px var(--body);padding:8px 14px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);border-radius:4px;cursor:pointer}
+
+/* newsletter strip */
+.notify{display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;border:2px solid var(--ink);padding:24px 28px;background:var(--sheet)}
+.notify h3{font-size:22px;font-weight:700}
+.notify p{margin:4px 0 0;color:var(--muted)}
+.field{display:flex;gap:8px;flex-wrap:wrap}
+input[type="email"]{font:15px var(--body);padding:11px 14px;min-width:240px;border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);border-radius:4px}
+
+nav.links{align-items:center}
+.lang{display:inline-flex;border:1.5px solid var(--ink);border-radius:4px;overflow:hidden;background:transparent;padding:0;cursor:pointer;font:600 13px var(--mono)}
+.lang span{padding:4px 9px;color:var(--muted)}
+html[lang="en"] .lang [data-l="en"],html[lang="es"] .lang [data-l="es"]{background:var(--ink);color:var(--paper)}
+.quiet .head{border-bottom-width:1px}
+.quiet .head h2{font-size:24px;font-weight:700}
+.quiet .support > div{padding:24px}
+.quiet .support h3{font-size:18px}
+.quiet .support p{font-size:15px;margin-bottom:14px}
+.quiet .qr{width:112px;height:112px}
+.quiet .wallet{grid-template-columns:112px 1fr}
+.fine{font-size:13px!important}
+.subinvite{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:14px;font-size:14px;color:var(--muted)}
+.ytbtn{font:600 14px var(--body);color:var(--ink);border:1.5px solid var(--ink);border-radius:4px;padding:7px 12px;text-decoration:none;white-space:nowrap}
+.ytbtn:hover{background:var(--ink);color:var(--paper)}
+footer{padding:40px 0 60px;color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:20px}
+
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(15,17,19,.55);display:none;place-items:center;padding:16px;z-index:20}
+.modal.open{display:grid}
+.dialog{background:var(--sheet);border:1px solid var(--line);max-width:440px;width:100%;padding:28px;display:flex;flex-direction:column;gap:14px}
+.dialog h3{font-size:24px;font-weight:800}
+.dialog p{margin:0;color:var(--muted)}
+.dialog .row{display:flex;gap:10px;flex-wrap:wrap}
+.dialog input{flex:1}
+.skip{background:none;border:0;color:var(--blue);font:500 14px var(--body);cursor:pointer;padding:0;text-align:left;text-decoration:underline}
+.ok{font-size:14px;color:var(--blue);min-height:1.4em;margin:0}
+
+@media (max-width:820px){
+  .hero-grid,.support{grid-template-columns:1fr}
+  .support > div + div{border-left:0;border-top:1px solid var(--line)}
+  .hero{padding-top:40px}
+}
+@media (max-width:420px){
+  .wallet{grid-template-columns:1fr}
+  input[type="email"]{min-width:0;width:100%}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="ArchDioramas home"><span class="a">arch</span><span class="b">DIORAMAS</span></a>
+    <nav class="links" aria-label="Main">
+      <a href="#plans" data-i18n="navPlans">Free plans</a>
+      <a href="#support" data-i18n="navCoffee">Support</a>
+      <a href="https://www.youtube.com/@dioramas-asmr">YouTube</a>
+      <button class="lang" id="langBtn" type="button" aria-label="Cambiar idioma / Change language"><span data-l="en">EN</span><span data-l="es">ES</span></button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="tag">FREE PLANS · PDF · SVG · DXF · STL</span>
+        <h1 data-i18n="h1">Build the miniatures you watch on the channel.</h1>
+        <p class="lead" data-i18n="lead">Every video comes with its plans: printable templates, laser-cut files and 3D models, free to download. Pick a project, grab the files and start building.</p>
+        <div class="btns">
+          <a class="btn" href="#plans" data-i18n="browse">Browse free plans</a>
+          <a class="btn ghost" href="https://www.youtube.com/@dioramas-asmr" data-i18n="watchYT">Watch on YouTube</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 320 220" fill="none" stroke="currentColor" stroke-width="1.5">
+          <g stroke="var(--ink)">
+            <path d="M60 170 L160 120 L260 170 L160 210 Z"/>
+            <path d="M90 155 L90 85 L160 50 L230 85 L230 155"/>
+            <path d="M160 120 L160 50"/>
+            <path d="M90 85 L160 120 L230 85"/>
+            <path d="M110 105 l0 25 l20 10 l0 -25 Z"/>
+            <path d="M185 120 l0 22 l22 -11 l0 -22 Z"/>
+          </g>
+          <g stroke="var(--blue)" stroke-width="1">
+            <path d="M60 182 L160 222" stroke-dasharray="3 3"/>
+            <path d="M30 170 L30 85"/><path d="M25 170 h10 M25 85 h10"/>
+          </g>
+          <text x="10" y="132" fill="var(--blue)" stroke="none" font-family="IBM Plex Mono, monospace" font-size="10" transform="rotate(-90 14 128)">70 mm</text>
+          <g stroke="var(--wood)" stroke-width="1.5"><path d="M100 140 l50 25 M100 147 l50 25 M100 154 l50 25"/></g>
+        </svg>
+        <div class="cap"><span data-i18n="sheet">SHEET 01 · STARTER HOUSE</span><span data-i18n="scale">SCALE 1:50</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="plans">
+    <div class="wrap">
+      <div class="head">
+        <h2 data-i18n="plansH">Free plans</h2>
+        <p data-i18n="plansP">Each file matches a video. Watch the build first, then download what you need.</p>
+      </div>
+      <div class="plans" id="planGrid"></div>
+    </div>
+  </section>
+
+  <section class="block" id="notify-section">
+    <div class="wrap">
+      <form class="notify" id="notifyForm" novalidate>
+        <div>
+          <h3 data-i18n="notifyH">Get the next free plan first</h3>
+          <p data-i18n="notifyP">One email when a new project drops. No spam, unsubscribe anytime.</p>
+        </div>
+        <div class="field">
+          <label for="notifyEmail" class="mono" style="position:absolute;left:-9999px">Email</label>
+          <input type="email" id="notifyEmail" placeholder="you@example.com" autocomplete="email">
+          <button class="btn" type="submit" data-i18n="notifyBtn">Notify me</button>
+        </div>
+        <p class="ok" id="notifyOk" role="status" style="width:100%"></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="block quiet" id="support">
+    <div class="wrap">
+      <div class="head">
+        <h2 data-i18n="coffeeH">Support the channel</h2>
+        <p data-i18n="coffeeP">The plans are free and will stay free. If one helped you, a coffee keeps the channel and new projects going.</p>
+      </div>
+      <div class="support">
+        <div>
+          <h3 data-i18n="cardH">Card or PayPal</h3>
+          <p data-i18n="cardP">Quick and secure through Ko-fi. No account needed.</p>
+                    <a class="btn ghost" id="kofiBtn" href="https://ko-fi.com/" data-i18n="kofi">Support on Ko-fi</a>
+        </div>
+        <div>
+          <h3 data-i18n="cryptoH">Crypto</h3>
+          <p data-i18n="cryptoP">Prefer crypto? Scan the code or copy the address.</p>
+          <div class="tabs" role="tablist" aria-label="Choose a coin" id="coinTabs"></div>
+          <div class="wallet">
+            <div class="qr" id="qr" aria-label="Wallet QR code"></div>
+            <div>
+              <p class="addr" id="addr"></p>
+              <button class="copy" id="copyBtn" type="button" data-i18n="copy">Copy address</button>
+              <p class="net" id="net"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span data-i18n="foot1">© 2026 ArchDioramas · Miniatures &amp; Dioramas</span>
+    <span data-i18n="foot2">Free files are for personal use. Please don't resell them.</span>
+  </div>
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="dialog">
+    <h3 id="mTitle">Your download</h3>
+    <p id="mText" data-i18n="mText">Enter your email to get the files.</p>
+    <form class="row" id="modalForm" novalidate>
+      <label for="modalEmail" style="position:absolute;left:-9999px">Email</label>
+      <input type="email" id="modalEmail" placeholder="you@example.com" autocomplete="email">
+      <button class="btn" type="submit" data-i18n="download">Download</button>
+    </form>
+    <p class="fine" data-i18n="privacy">We only use your email to send you new plans. Unsubscribe anytime.</p>
+    <div class="subinvite">
+      <span data-i18n="subText">Enjoying these projects? Subscribe to see the next build.</span>
+      <a class="ytbtn" href="https://www.youtube.com/@dioramas-asmr?sub_confirmation=1" data-i18n="subBtn">Subscribe on YouTube</a>
+    </div>
+    <p class="ok" id="modalOk" role="status"></p>
+  </div>
+</div>
+
+<script>
+/* ====== EDIT HERE: your free plans (English + Spanish) ====== */
+const PLANS = [
+  {
+    id:"brick-wall", scale:"1:20", formats:["PDF","SVG","DXF"], art:"wall",
+    video:"https://www.youtube.com/@dioramas-asmr", file:"#",
+    en:{title:"Brick Wall Module", desc:"A stackable wall section with real bond patterns. Print the template or cut it on a laser."},
+    es:{title:"Módulo de muro de ladrillo", desc:"Una sección de muro apilable con aparejo real. Imprime la plantilla o córtala en láser."}
+  },
+  {
+    id:"tiny-shop", scale:"1:24", formats:["PDF","SVG"], art:"shop",
+    video:"https://www.youtube.com/@dioramas-asmr", file:"#",
+    en:{title:"Tiny Shop Facade", desc:"A little storefront with door, awning and window frames. Great first diorama."},
+    es:{title:"Fachada de tiendita", desc:"Un pequeño local con puerta, toldo y marcos de ventana. Ideal como primer diorama."}
+  },
+  {
+    id:"furniture-set", scale:"1:50", formats:["STL","3MF"], art:"sofa",
+    video:"https://www.youtube.com/@dioramas-asmr", file:"#",
+    en:{title:"Minimal Furniture Set", desc:"Sofa, table and chairs for architectural models, ready for your 3D printer."},
+    es:{title:"Set de muebles minimalistas", desc:"Sofá, mesa y sillas para maquetas arquitectónicas, listos para tu impresora 3D."}
+  }
+];
+
+/* ====== EDIT HERE: your links and wallets ====== */
+const KOFI_URL = "https://ko-fi.com/";
+const WALLETS = [
+  { coin:"Bitcoin", short:"BTC", address:"PASTE-YOUR-BITSO-BTC-ADDRESS",
+    en:"Send only Bitcoin (BTC) on the Bitcoin network.", es:"Envía solo Bitcoin (BTC) por la red Bitcoin." },
+  { coin:"USDT", short:"USDT", address:"PASTE-YOUR-BITSO-USDT-ADDRESS",
+    en:"Send only USDT on the network shown in Bitso.", es:"Envía solo USDT por la red indicada en Bitso." }
+];
+
+/* ====== Page texts ====== */
+const T = {
+  en:{
+    navPlans:"Free plans", navCoffee:"Support",
+    h1:"Build the miniatures you watch on the channel.",
+    lead:"Every video comes with its plans: printable templates, laser-cut files and 3D models, free to download. Pick a project, grab the files and start building.",
+    browse:"Browse free plans", watchYT:"Watch on YouTube",
+    sheet:"SHEET 01 · STARTER HOUSE", scale:"SCALE 1:50",
+    plansH:"Free plans", plansP:"Each file matches a video. Watch the build first, then download what you need.",
+    notifyH:"Get the next free plan first", notifyP:"One email when a new project drops. No spam, unsubscribe anytime.", notifyBtn:"Notify me",
+    coffeeH:"Support the channel", coffeeP:"All plans are free. If you'd like to help keep new projects coming, you can leave a small contribution here.",
+    cardH:"Card or PayPal", cardP:"Through Ko-fi, any amount you like.",
+    c1:"1 coffee · $3", c2:"2 coffees · $6", c3:"3 coffees · $9", kofi:"Contribute via Ko-fi",
+    cryptoH:"Crypto", cryptoP:"Scan the code or copy the address.", copy:"Copy address",
+    copied:"Copied ✓", copyFail:"Select and copy the address above",
+    foot1:"© 2026 ArchDioramas · Miniatures & Dioramas", foot2:"Free files are for personal use. Please don't resell them.",
+    mText:"Enter your email to get the files. We'll also let you know when the next free plan is ready.",
+    download:"Get the files", privacy:"We only use your email to send you new plans. Unsubscribe anytime.",
+    subText:"Enjoying these projects? Subscribe to see the next build.", subBtn:"Subscribe on YouTube",
+    example:"EXAMPLE", watch:"Watch the build ›", dlFree:"Download free",
+    exampleMsg:"This is an example card: the real file link goes here.",
+    starting:"Your download is starting. Happy building!",
+    badEmailModal:"Please enter a full email address to get the files.",
+    badEmail:"Please enter a full email address.",
+    onList:"You're on the list. See you at the next build!"
+  },
+  es:{
+    navPlans:"Planos gratis", navCoffee:"Apoyar",
+    h1:"Construye las miniaturas que ves en el canal.",
+    lead:"Cada video trae sus planos: plantillas para imprimir, archivos para corte láser y modelos 3D, gratis para descargar. Elige un proyecto, baja los archivos y empieza a construir.",
+    browse:"Ver planos gratis", watchYT:"Ver en YouTube",
+    sheet:"LÁMINA 01 · CASITA INICIAL", scale:"ESCALA 1:50",
+    plansH:"Planos gratis", plansP:"Cada archivo corresponde a un video. Mira primero la construcción y luego descarga lo que necesites.",
+    notifyH:"Recibe primero el próximo plano gratis", notifyP:"Un correo cuando salga un proyecto nuevo. Sin spam, te das de baja cuando quieras.", notifyBtn:"Avísame",
+    coffeeH:"Apoya el canal", coffeeP:"Todos los planos son gratis. Si quieres ayudar a que sigan saliendo proyectos nuevos, puedes dejar una pequeña aportación aquí.",
+    cardH:"Tarjeta o PayPal", cardP:"Con Ko-fi, la cantidad que tú quieras.",
+    c1:"1 café · $3", c2:"2 cafés · $6", c3:"3 cafés · $9", kofi:"Aportar con Ko-fi",
+    cryptoH:"Cripto", cryptoP:"Escanea el código o copia la dirección.", copy:"Copiar dirección",
+    copied:"Copiada ✓", copyFail:"Selecciona y copia la dirección de arriba",
+    foot1:"© 2026 ArchDioramas · Miniaturas y dioramas", foot2:"Los archivos gratis son para uso personal. Por favor no los revendas.",
+    mText:"Escribe tu correo para recibir los archivos. También te avisaremos cuando salga el próximo plano gratis.",
+    download:"Obtener archivos", privacy:"Solo usamos tu correo para enviarte planos nuevos. Puedes darte de baja cuando quieras.",
+    subText:"¿Te gustan estos proyectos? Suscríbete para ver la próxima construcción.", subBtn:"Suscribirme en YouTube",
+    example:"EJEMPLO", watch:"Ver la construcción ›", dlFree:"Descargar gratis",
+    exampleMsg:"Esta es una tarjeta de ejemplo: aquí irá el enlace al archivo real.",
+    starting:"Tu descarga está empezando. ¡A construir!",
+    badEmailModal:"Escribe un correo completo para recibir los archivos.",
+    badEmail:"Escribe un correo completo, por favor.",
+    onList:"¡Ya estás en la lista! Nos vemos en la próxima construcción."
+  }
+};
+
+/* language: saved choice, else browser language, else English */
+let lang = 'en';
+try{ lang = localStorage.getItem('ad-lang') || ((navigator.language||'').toLowerCase().startsWith('es') ? 'es' : 'en'); }catch(e){}
+const t = k => (T[lang] && T[lang][k]) || T.en[k];
+
+/* ---- drawings for the cards ---- */
+const ART = {
+  wall:`<svg viewBox="0 0 200 140" fill="none" stroke-width="1.4"><g stroke="var(--ink)"><rect x="20" y="20" width="160" height="100"/>${
+    Array.from({length:5},(_,r)=>Array.from({length:5},(_,c)=>{const o=r%2?16:0;const x=20+c*32+o;return x+32<=180?`<rect x="${x}" y="${20+r*20}" width="32" height="20"/>`:''}).join('')).join('')
+  }</g><g stroke="var(--blue)" stroke-width="1"><path d="M20 132 H180 M20 127 v10 M180 127 v10"/></g></svg>`,
+  shop:`<svg viewBox="0 0 200 140" fill="none" stroke-width="1.4"><g stroke="var(--ink)"><rect x="40" y="30" width="120" height="96"/><path d="M34 30 h132 l-8 -14 h-116 Z"/><rect x="58" y="62" width="34" height="64"/><rect x="104" y="62" width="40" height="36"/><path d="M124 62 v36 M104 80 h40"/></g><g stroke="var(--wood)"><path d="M40 46 h120 l-6 10 h-108 Z"/></g></svg>`,
+  sofa:`<svg viewBox="0 0 200 140" fill="none" stroke-width="1.4"><g stroke="var(--ink)"><rect x="24" y="58" width="96" height="30" rx="3"/><rect x="24" y="44" width="96" height="16" rx="3"/><path d="M30 88 v10 M114 88 v10"/><rect x="132" y="70" width="48" height="6"/><path d="M138 76 v24 M174 76 v24"/></g><g stroke="var(--blue)" stroke-width="1"><path d="M24 112 H120 M24 107 v10 M120 107 v10"/></g><text x="58" y="128" fill="var(--blue)" font-family="IBM Plex Mono, monospace" font-size="10">40 mm</text></svg>`
+};
+
+const grid = document.getElementById('planGrid');
+function renderPlans(){
+  grid.innerHTML = PLANS.map(p=>{ const x = p[lang]||p.en; return `
+  <article class="card">
+    <div class="thumb">${ART[p.art]||''}<span class="scale">${p.scale}</span>${p.file==='#'?`<span class="example">${t('example')}</span>`:''}</div>
+    <div class="body">
+      <h3>${x.title}</h3>
+      <p>${x.desc}</p>
+      <div class="chips">${p.formats.map(f=>`<span class="chip">${f}</span>`).join('')}</div>
+      <div class="actions">
+        <a class="watch" href="${p.video}">${t('watch')}</a>
+        <button class="btn" type="button" data-plan="${p.id}">${t('dlFree')}</button>
+      </div>
+    </div>
+  </article>`}).join('');
+}
+
+let walletIndex = 0;
+function applyLang(){
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent = t(el.dataset.i18n); });
+  renderPlans();
+  document.getElementById('net').textContent = WALLETS[walletIndex][lang];
+  if(current) document.getElementById('mTitle').textContent = (current[lang]||current.en).title;
+}
+document.getElementById('langBtn').addEventListener('click', ()=>{
+  lang = lang==='en' ? 'es' : 'en';
+  try{ localStorage.setItem('ad-lang', lang); }catch(e){}
+  applyLang();
+});
+
+/* ---- download modal ---- */
+const modal = document.getElementById('modal');
+let current = null;
+grid.addEventListener('click', e=>{
+  const b = e.target.closest('[data-plan]'); if(!b) return;
+  current = PLANS.find(p=>p.id===b.dataset.plan);
+  document.getElementById('mTitle').textContent = (current[lang]||current.en).title;
+  document.getElementById('modalOk').textContent = '';
+  modal.classList.add('open');
+  document.getElementById('modalEmail').focus();
+});
+function closeModal(){ modal.classList.remove('open'); }
+modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
+function startDownload(){
+  const ok = document.getElementById('modalOk');
+  if(!current || current.file==='#'){ ok.textContent = t('exampleMsg'); return; }
+  window.location.href = current.file;
+  ok.textContent = t('starting');
+}
+document.getElementById('modalForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  const v = document.getElementById('modalEmail').value.trim();
+  if(!/^\S+@\S+\.\S+$/.test(v)){ document.getElementById('modalOk').textContent=t('badEmailModal'); return; }
+  /* TODO: send v to the email list service */
+  startDownload();
+});
+
+/* ---- notify strip ---- */
+document.getElementById('notifyForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  const v = document.getElementById('notifyEmail').value.trim();
+  const ok = document.getElementById('notifyOk');
+  if(!/^\S+@\S+\.\S+$/.test(v)){ ok.textContent=t('badEmail'); return; }
+  /* TODO: send v to the email list service */
+  ok.textContent = t('onList');
+});
+
+/* ---- support ---- */
+document.getElementById('kofiBtn').href = KOFI_URL;
+const tabs = document.getElementById('coinTabs');
+tabs.innerHTML = WALLETS.map((w,i)=>`<button type="button" role="tab" id="tab-${w.short}" aria-selected="${i===0}">${w.coin}</button>`).join('');
+function showWallet(i){
+  walletIndex = i;
+  const w = WALLETS[i];
+  [...tabs.children].forEach((b,j)=>b.setAttribute('aria-selected', j===i));
+  document.getElementById('addr').textContent = w.address;
+  document.getElementById('net').textContent = w[lang];
+  const box = document.getElementById('qr'); box.innerHTML='';
+  try{ new QRCode(box,{text:w.address,width:240,height:240,colorDark:'#1F2326',colorLight:'#FFFFFF'}); }catch(err){ box.textContent='QR'; }
+}
+tabs.addEventListener('click', e=>{ const b=e.target.closest('button'); if(b) showWallet([...tabs.children].indexOf(b)); });
+document.getElementById('copyBtn').addEventListener('click', async ()=>{
+  const btn = document.getElementById('copyBtn');
+  try{ await navigator.clipboard.writeText(document.getElementById('addr').textContent); btn.textContent=t('copied'); }
+  catch(err){ btn.textContent=t('copyFail'); }
+  setTimeout(()=>btn.textContent=t('copy'),2500);
+});
+
+showWallet(0);
+applyLang();
+</script>
+</body>
+</html>
