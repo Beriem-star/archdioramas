@@ -1,0 +1,13 @@
+# ArchDioramas
+
+> ArchDioramas builds miniature dioramas and architectural models and shares free printable plans, laser-cut files (SVG/DXF) and 3D-printable STL models. Videos are relaxing, voice-free ASMR builds on YouTube: https://www.youtube.com/@dioramas-asmr
+
+## Guides
+- [Diorama Scales Explained: 1:12, 1:20, 1:24, 1:35, 1:50, 1:87 and More](https://archdioramas.vercel.app/blog/diorama-scales-explained/): What diorama and model scales mean, how big a person, door or brick is at each scale, and how to choose the right scale for your first build.
+- [How to Make a Diorama: A Step-by-Step Guide for Beginners](https://archdioramas.vercel.app/blog/how-to-make-a-diorama/): Build your first diorama from plan to finished scene: choosing a scale, making the base, walls and details, painting, weathering and lighting.
+- [How to Make Miniature Bricks for Dioramas (5 Methods)](https://archdioramas.vercel.app/blog/how-to-make-miniature-bricks/): Five ways to make realistic miniature brick walls for dioramas and models: engraved foam, printed texture, laser-engraved MDF, 3D-printed sheets and real clay bricks.
+- [Laser-Cut vs 3D-Printed Diorama Parts: Which Should You Use?](https://archdioramas.vercel.app/blog/laser-cut-vs-3d-printed-diorama-parts/): A practical comparison of laser cutting and 3D printing for dioramas and architectural models: which parts suit each, materials, file formats and safety.
+
+## Site
+- [Free plans](https://archdioramas.vercel.app/#plans): free downloadable plans that match each video
+- [YouTube channel](https://www.youtube.com/@dioramas-asmr): full diorama builds

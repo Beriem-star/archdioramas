@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ArchDioramas Free Plans</title>
+<link rel="canonical" href="https://archdioramas.vercel.app/">
 <meta name="description" content="Free printable plans, laser files and STL models from the ArchDioramas YouTube channel.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -167,6 +168,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <a class="logo" href="#top" aria-label="ArchDioramas home"><span class="a">arch</span><span class="b">DIORAMAS</span></a>
     <nav class="links" aria-label="Main">
       <a href="#plans" data-i18n="navPlans">Free plans</a>
+      <a href="/blog/" data-i18n="navBlog">Guides</a>
       <a href="#support" data-i18n="navCoffee">Support</a>
       <a href="https://www.youtube.com/@dioramas-asmr">YouTube</a>
       <button class="lang" id="langBtn" type="button" aria-label="Cambiar idioma / Change language"><span data-l="en">EN</span><span data-l="es">ES</span></button>
@@ -325,7 +327,7 @@ const WALLETS = [
 /* ====== Page texts ====== */
 const T = {
   en:{
-    navPlans:"Free plans", navCoffee:"Support",
+    navPlans:"Free plans", navBlog:"Guides", navCoffee:"Support",
     h1:"Build the miniatures you watch on the channel.",
     lead:"Every video comes with its plans: printable templates, laser-cut files and 3D models, free to download. Pick a project, grab the files and start building.",
     browse:"Browse free plans", watchYT:"Watch on YouTube",
@@ -349,7 +351,7 @@ const T = {
     onList:"You're on the list. See you at the next build!"
   },
   es:{
-    navPlans:"Planos gratis", navCoffee:"Apoyar",
+    navPlans:"Planos gratis", navBlog:"Guías", navCoffee:"Apoyar",
     h1:"Construye las miniaturas que ves en el canal.",
     lead:"Cada video trae sus planos: plantillas para imprimir, archivos para corte láser y modelos 3D, gratis para descargar. Elige un proyecto, baja los archivos y empieza a construir.",
     browse:"Ver planos gratis", watchYT:"Ver en YouTube",
