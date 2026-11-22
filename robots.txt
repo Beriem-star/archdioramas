@@ -37,5 +37,7 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /sugerencias/
+Disallow: /api/
 
 Sitemap: https://archdioramas.vercel.app/sitemap.xml

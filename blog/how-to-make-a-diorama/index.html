@@ -139,6 +139,17 @@
 </ul>
 <p>Want a head start? Download one of the free plans and follow along with the matching video, step by step.</p></div>
 <section class="faq"><h2>Frequently asked questions</h2><details open><summary>What materials do I need to make a diorama?</summary><p>For a first diorama you need a rigid base (MDF, plywood or foam board), card or foam board for walls, PVA or wood glue, a hobby knife, a steel ruler, a cutting mat and acrylic paints. Optional extras are filler or spackle for textures, static grass and LED lights.</p></details><details open><summary>How long does it take to make a diorama?</summary><p>A small beginner scene can be finished in a weekend. Detailed architectural dioramas with interiors and lighting can take several weeks.</p></details><details open><summary>What is the difference between a diorama and a model?</summary><p>A model usually reproduces a single object, such as a building or vehicle. A diorama places objects in a setting with ground, context and often figures, to show a scene or moment.</p></details><details open><summary>Do I need a laser cutter or 3D printer?</summary><p>No. Everything can be cut by hand from printed templates. Laser cutters and 3D printers make parts faster and more precise, and our free plans include files for both as well as printable versions.</p></details></section>
+<section class="ideas" id="ideas" aria-labelledby="ideas-h">
+<h2 id="ideas-h">What should we build next?</h2><p>Tell us what you'd like to see in the next video or guide. We read every idea.</p>
+<form method="post" action="/api/suggest" data-ok="Thanks! Your idea arrived. Subscribe so you don&#x27;t miss it if we build it." data-err="Sorry, it didn&#x27;t send. Please try again in a moment." data-short="Please write a few words about your idea." data-sending="Sending…">
+<input type="hidden" name="lang" value="en"><input type="hidden" name="page" value="/blog/how-to-make-a-diorama/">
+<div class="hp" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
+<fieldset><legend>It's an idea for</legend><label><input type="radio" name="kind" value="video"> A video</label><label><input type="radio" name="kind" value="blog"> A blog guide</label><label><input type="radio" name="kind" value="both" checked> Both</label></fieldset>
+<label class="f">Your idea<textarea name="idea" rows="3" maxlength="600" required placeholder="e.g. a 1:24 coffee shop with working lights"></textarea></label>
+<div class="row"><label class="f">Your name (optional)<input name="name" maxlength="60" autocomplete="given-name"></label>
+<button class="btn wood" type="submit">Send my idea</button></div>
+<p class="msg" role="status" aria-live="polite"></p>
+</form></section>
 <aside class="cta">
 <div><h3>Watch the builds</h3><p>Relaxing, voice-free diorama builds from start to finish.</p><a class="btn" href="https://www.youtube.com/@dioramas-asmr?sub_confirmation=1">Subscribe on YouTube</a></div>
 <div><h3>Get the free plans</h3><p>Printable templates, laser-cut files and STL models that match the videos.</p><a class="btn wood" href="/#plans" data-setlang="en">Download free plans</a></div>
@@ -147,4 +158,9 @@
 </div></article></main><footer><div class="wrap">
 <span>© 2026 ArchDioramas · Miniatures &amp; Dioramas</span>
 <span><a href="/blog/">Guides</a> · <a href="/#plans" data-setlang="en">Free plans</a> · <a href="https://www.youtube.com/@dioramas-asmr">YouTube</a> · <a href="/blog/feed.xml">RSS</a></span>
-</div></footer><script>document.querySelectorAll('[data-setlang]').forEach(a=>a.addEventListener('click',()=>{try{localStorage.setItem('ad-lang',a.dataset.setlang)}catch(e){}}))</script></body></html>
+</div></footer><script>document.querySelectorAll('[data-setlang]').forEach(a=>a.addEventListener('click',()=>{try{localStorage.setItem('ad-lang',a.dataset.setlang)}catch(e){}}))</script><script>(()=>{const f=document.querySelector('#ideas form');if(!f)return;const m=f.querySelector('.msg'),b=f.querySelector('button');
+if(location.hash==='#ideas-ok')m.textContent=f.dataset.ok;if(location.hash==='#ideas-error')m.textContent=f.dataset.err;
+f.addEventListener('submit',async ev=>{ev.preventDefault();if(f.idea.value.trim().length<3){m.textContent=f.dataset.short;f.idea.focus();return}
+b.disabled=true;m.textContent=f.dataset.sending;try{const r=await fetch(f.action,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
+body:JSON.stringify(Object.fromEntries(new FormData(f)))});const j=await r.json().catch(()=>({}));if(r.ok&&j.ok){m.textContent=f.dataset.ok;f.idea.value='';f.name.value=''}else m.textContent=f.dataset.err}
+catch(e){m.textContent=f.dataset.err}b.disabled=false})})()</script></body></html>

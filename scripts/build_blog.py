@@ -50,6 +50,14 @@ T = {
         "idx_desc": "Step-by-step diorama and miniature guides: scales, materials, laser-cut and 3D-printed parts, and techniques from the ArchDioramas YouTube channel.",
         "foot": "Miniatures &amp; Dioramas", "blogname": "ArchDioramas Guides",
         "switch": "Cambiar a español",
+        "ih": "What should we build next?",
+        "ip": "Tell us what you'd like to see in the next video or guide. We read every idea.",
+        "ikind": "It's an idea for", "kv": "A video", "kb": "A blog guide", "kboth": "Both",
+        "iidea": "Your idea", "iph": "e.g. a 1:24 coffee shop with working lights",
+        "iname": "Your name (optional)", "isend": "Send my idea",
+        "iok": "Thanks! Your idea arrived. Subscribe so you don't miss it if we build it.",
+        "ierr": "Sorry, it didn't send. Please try again in a moment.",
+        "ishort": "Please write a few words about your idea.", "isending": "Sending…",
     },
     "es": {
         "plans": "Planos gratis", "guides": "Guías", "subscribe": "Suscríbete",
@@ -67,6 +75,14 @@ T = {
         "idx_desc": "Guías paso a paso de dioramas y miniaturas: escalas, materiales, piezas en corte láser e impresión 3D, y técnicas del canal de YouTube de ArchDioramas.",
         "foot": "Miniaturas y dioramas", "blogname": "Guías de ArchDioramas",
         "switch": "Switch to English",
+        "ih": "¿Qué construimos después?",
+        "ip": "Cuéntanos qué te gustaría ver en el próximo video o guía. Leemos todas las ideas.",
+        "ikind": "Es una idea para", "kv": "Un video", "kb": "Una guía del blog", "kboth": "Ambos",
+        "iidea": "Tu idea", "iph": "p. ej. una cafetería a 1:24 con luces que encienden",
+        "iname": "Tu nombre (opcional)", "isend": "Enviar mi idea",
+        "iok": "¡Gracias! Tu idea llegó. Suscríbete para no perdértela si la construimos.",
+        "ierr": "Lo sentimos, no se pudo enviar. Inténtalo de nuevo en un momento.",
+        "ishort": "Escribe unas palabras sobre tu idea.", "isending": "Enviando…",
     },
 }
 
@@ -109,7 +125,7 @@ def footer(lang):
     return f'''<footer><div class="wrap">
 <span>© {dt.date.today().year} ArchDioramas · {t["foot"]}</span>
 <span><a href="{BASE[lang]}">{t["guides"]}</a> · <a href="/#plans" data-setlang="{lang}">{t["plans"]}</a> · <a href="{YOUTUBE}">YouTube</a> · <a href="{BASE[lang]}feed.xml">RSS</a></span>
-</div></footer>{SAVE_LANG}'''
+</div></footer>{SAVE_LANG}{IDEAS_JS}'''
 
 
 def cta(lang):
@@ -118,6 +134,30 @@ def cta(lang):
 <div><h3>{t["cta1h"]}</h3><p>{t["cta1p"]}</p><a class="btn" href="{SUBSCRIBE}">{t["cta1b"]}</a></div>
 <div><h3>{t["cta2h"]}</h3><p>{t["cta2p"]}</p><a class="btn wood" href="/#plans" data-setlang="{lang}">{t["cta2b"]}</a></div>
 </aside>'''
+
+
+def ideas(lang, page):
+    t = T[lang]
+    radio = lambda v, label, chk="": f'<label><input type="radio" name="kind" value="{v}"{chk}> {label}</label>'
+    return f'''<section class="ideas" id="ideas" aria-labelledby="ideas-h">
+<h2 id="ideas-h">{t["ih"]}</h2><p>{t["ip"]}</p>
+<form method="post" action="/api/suggest" data-ok="{e(t["iok"])}" data-err="{e(t["ierr"])}" data-short="{e(t["ishort"])}" data-sending="{e(t["isending"])}">
+<input type="hidden" name="lang" value="{lang}"><input type="hidden" name="page" value="{e(page)}">
+<div class="hp" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
+<fieldset><legend>{t["ikind"]}</legend>{radio("video", t["kv"])}{radio("blog", t["kb"])}{radio("both", t["kboth"], " checked")}</fieldset>
+<label class="f">{t["iidea"]}<textarea name="idea" rows="3" maxlength="600" required placeholder="{e(t["iph"])}"></textarea></label>
+<div class="row"><label class="f">{t["iname"]}<input name="name" maxlength="60" autocomplete="given-name"></label>
+<button class="btn wood" type="submit">{t["isend"]}</button></div>
+<p class="msg" role="status" aria-live="polite"></p>
+</form></section>'''
+
+
+IDEAS_JS = """<script>(()=>{const f=document.querySelector('#ideas form');if(!f)return;const m=f.querySelector('.msg'),b=f.querySelector('button');
+if(location.hash==='#ideas-ok')m.textContent=f.dataset.ok;if(location.hash==='#ideas-error')m.textContent=f.dataset.err;
+f.addEventListener('submit',async ev=>{ev.preventDefault();if(f.idea.value.trim().length<3){m.textContent=f.dataset.short;f.idea.focus();return}
+b.disabled=true;m.textContent=f.dataset.sending;try{const r=await fetch(f.action,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
+body:JSON.stringify(Object.fromEntries(new FormData(f)))});const j=await r.json().catch(()=>({}));if(r.ok&&j.ok){m.textContent=f.dataset.ok;f.idea.value='';f.name.value=''}else m.textContent=f.dataset.err}
+catch(e){m.textContent=f.dataset.err}b.disabled=false})})()</script>"""
 
 
 def head(lang, title, desc, url, alternates, extra=""):
@@ -225,6 +265,7 @@ def render_post(p, posts, by_key):
 <section class="takeaways"><h2>{t["takeaways"]}</h2><ul>{take}</ul></section>
 <div class="content">{body}</div>
 {faq_html}
+{ideas(lang, p["path"])}
 {cta(lang)}
 {related}
 </div></article></main>{footer(lang)}</body></html>'''
@@ -251,6 +292,7 @@ def render_index(lang, posts):
 <h1>{t["idx_h1"]}</h1>
 <p>{t["idx_p"]}</p></section>
 <div class="posts">{cards}</div>
+<div class="sheet">{ideas(lang, BASE[lang])}</div>
 {cta(lang)}
 </div></main>{footer(lang)}</body></html>'''
     d = ROOT / BASE[lang].strip("/")
@@ -289,7 +331,7 @@ def render_seo_files(posts, by_key):
             "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot-Extended", "Bingbot", "Googlebot"]
     robots = "# Search engines and AI assistants are welcome to read and cite this site.\n"
     robots += "".join(f"User-agent: {b}\nAllow: /\n\n" for b in bots)
-    robots += f"User-agent: *\nAllow: /\n\nSitemap: {SITE_URL}/sitemap.xml\n"
+    robots += f"User-agent: *\nAllow: /\nDisallow: /sugerencias/\nDisallow: /api/\n\nSitemap: {SITE_URL}/sitemap.xml\n"
     (ROOT / "robots.txt").write_text(robots, encoding="utf-8")
 
     llms = f"""# ArchDioramas

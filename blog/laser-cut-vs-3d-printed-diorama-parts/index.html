@@ -155,6 +155,17 @@
 <h2 id="summary">Summary</h2>
 <p>Use the laser for anything flat, square or engraved. Use the printer for anything round, solid or tiny. Combine them and you get the speed of one with the detail of the other.</p></div>
 <section class="faq"><h2>Frequently asked questions</h2><details open><summary>Is laser cutting or 3D printing better for dioramas?</summary><p>Neither is better overall. Laser cutting is faster and cleaner for flat sheet parts like walls and floors, while 3D printing handles rounded, detailed or solid objects. Combining both usually gives the best result.</p></details><details open><summary>What file formats do I need?</summary><p>For laser cutting you need vector files, usually SVG or DXF. For 3D printing you need a 3D mesh, usually STL or 3MF, which you open in a slicer program before printing.</p></details><details open><summary>What materials can I laser-cut for dioramas?</summary><p>Common choices are MDF, plywood, basswood, card, cardboard and cast acrylic. Avoid PVC, vinyl and other chlorine-containing plastics, because they release toxic, corrosive fumes when cut.</p></details><details open><summary>Should I use FDM or resin 3D printing for miniatures?</summary><p>FDM printers (using filament such as PLA) are cheap, safe and great for larger parts. Resin printers capture much finer detail for small figures and ornaments, but resin requires gloves, good ventilation and washing and curing after printing.</p></details></section>
+<section class="ideas" id="ideas" aria-labelledby="ideas-h">
+<h2 id="ideas-h">What should we build next?</h2><p>Tell us what you'd like to see in the next video or guide. We read every idea.</p>
+<form method="post" action="/api/suggest" data-ok="Thanks! Your idea arrived. Subscribe so you don&#x27;t miss it if we build it." data-err="Sorry, it didn&#x27;t send. Please try again in a moment." data-short="Please write a few words about your idea." data-sending="Sending…">
+<input type="hidden" name="lang" value="en"><input type="hidden" name="page" value="/blog/laser-cut-vs-3d-printed-diorama-parts/">
+<div class="hp" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
+<fieldset><legend>It's an idea for</legend><label><input type="radio" name="kind" value="video"> A video</label><label><input type="radio" name="kind" value="blog"> A blog guide</label><label><input type="radio" name="kind" value="both" checked> Both</label></fieldset>
+<label class="f">Your idea<textarea name="idea" rows="3" maxlength="600" required placeholder="e.g. a 1:24 coffee shop with working lights"></textarea></label>
+<div class="row"><label class="f">Your name (optional)<input name="name" maxlength="60" autocomplete="given-name"></label>
+<button class="btn wood" type="submit">Send my idea</button></div>
+<p class="msg" role="status" aria-live="polite"></p>
+</form></section>
 <aside class="cta">
 <div><h3>Watch the builds</h3><p>Relaxing, voice-free diorama builds from start to finish.</p><a class="btn" href="https://www.youtube.com/@dioramas-asmr?sub_confirmation=1">Subscribe on YouTube</a></div>
 <div><h3>Get the free plans</h3><p>Printable templates, laser-cut files and STL models that match the videos.</p><a class="btn wood" href="/#plans" data-setlang="en">Download free plans</a></div>
@@ -163,4 +174,9 @@
 </div></article></main><footer><div class="wrap">
 <span>© 2026 ArchDioramas · Miniatures &amp; Dioramas</span>
 <span><a href="/blog/">Guides</a> · <a href="/#plans" data-setlang="en">Free plans</a> · <a href="https://www.youtube.com/@dioramas-asmr">YouTube</a> · <a href="/blog/feed.xml">RSS</a></span>
-</div></footer><script>document.querySelectorAll('[data-setlang]').forEach(a=>a.addEventListener('click',()=>{try{localStorage.setItem('ad-lang',a.dataset.setlang)}catch(e){}}))</script></body></html>
+</div></footer><script>document.querySelectorAll('[data-setlang]').forEach(a=>a.addEventListener('click',()=>{try{localStorage.setItem('ad-lang',a.dataset.setlang)}catch(e){}}))</script><script>(()=>{const f=document.querySelector('#ideas form');if(!f)return;const m=f.querySelector('.msg'),b=f.querySelector('button');
+if(location.hash==='#ideas-ok')m.textContent=f.dataset.ok;if(location.hash==='#ideas-error')m.textContent=f.dataset.err;
+f.addEventListener('submit',async ev=>{ev.preventDefault();if(f.idea.value.trim().length<3){m.textContent=f.dataset.short;f.idea.focus();return}
+b.disabled=true;m.textContent=f.dataset.sending;try{const r=await fetch(f.action,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
+body:JSON.stringify(Object.fromEntries(new FormData(f)))});const j=await r.json().catch(()=>({}));if(r.ok&&j.ok){m.textContent=f.dataset.ok;f.idea.value='';f.name.value=''}else m.textContent=f.dataset.err}
+catch(e){m.textContent=f.dataset.err}b.disabled=false})})()</script></body></html>

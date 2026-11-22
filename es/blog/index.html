@@ -34,6 +34,17 @@
 <span class="more">Leer la guía ›</span></a><a class="post-card" href="/es/blog/escalas-para-dioramas/">
 <span class="meta">22 de noviembre de 2026</span><h2>Escalas para dioramas explicadas: 1:12, 1:20, 1:24, 1:35, 1:50, 1:87 y más</h2><p>Qué significan las escalas de dioramas y maquetas, cuánto mide una persona, una puerta o un ladrillo en cada escala y cómo elegir la escala para tu primera construcción.</p>
 <span class="more">Leer la guía ›</span></a></div>
+<div class="sheet"><section class="ideas" id="ideas" aria-labelledby="ideas-h">
+<h2 id="ideas-h">¿Qué construimos después?</h2><p>Cuéntanos qué te gustaría ver en el próximo video o guía. Leemos todas las ideas.</p>
+<form method="post" action="/api/suggest" data-ok="¡Gracias! Tu idea llegó. Suscríbete para no perdértela si la construimos." data-err="Lo sentimos, no se pudo enviar. Inténtalo de nuevo en un momento." data-short="Escribe unas palabras sobre tu idea." data-sending="Enviando…">
+<input type="hidden" name="lang" value="es"><input type="hidden" name="page" value="/es/blog/">
+<div class="hp" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
+<fieldset><legend>Es una idea para</legend><label><input type="radio" name="kind" value="video"> Un video</label><label><input type="radio" name="kind" value="blog"> Una guía del blog</label><label><input type="radio" name="kind" value="both" checked> Ambos</label></fieldset>
+<label class="f">Tu idea<textarea name="idea" rows="3" maxlength="600" required placeholder="p. ej. una cafetería a 1:24 con luces que encienden"></textarea></label>
+<div class="row"><label class="f">Tu nombre (opcional)<input name="name" maxlength="60" autocomplete="given-name"></label>
+<button class="btn wood" type="submit">Enviar mi idea</button></div>
+<p class="msg" role="status" aria-live="polite"></p>
+</form></section></div>
 <aside class="cta">
 <div><h3>Mira las construcciones</h3><p>Construcciones de dioramas relajantes y sin voz, de principio a fin.</p><a class="btn" href="https://www.youtube.com/@dioramas-asmr?sub_confirmation=1">Suscríbete en YouTube</a></div>
 <div><h3>Descarga los planos gratis</h3><p>Plantillas para imprimir, archivos para corte láser y modelos STL de cada video.</p><a class="btn wood" href="/#plans" data-setlang="es">Descargar planos gratis</a></div>
@@ -41,4 +52,9 @@
 </div></main><footer><div class="wrap">
 <span>© 2026 ArchDioramas · Miniaturas y dioramas</span>
 <span><a href="/es/blog/">Guías</a> · <a href="/#plans" data-setlang="es">Planos gratis</a> · <a href="https://www.youtube.com/@dioramas-asmr">YouTube</a> · <a href="/es/blog/feed.xml">RSS</a></span>
-</div></footer><script>document.querySelectorAll('[data-setlang]').forEach(a=>a.addEventListener('click',()=>{try{localStorage.setItem('ad-lang',a.dataset.setlang)}catch(e){}}))</script></body></html>
+</div></footer><script>document.querySelectorAll('[data-setlang]').forEach(a=>a.addEventListener('click',()=>{try{localStorage.setItem('ad-lang',a.dataset.setlang)}catch(e){}}))</script><script>(()=>{const f=document.querySelector('#ideas form');if(!f)return;const m=f.querySelector('.msg'),b=f.querySelector('button');
+if(location.hash==='#ideas-ok')m.textContent=f.dataset.ok;if(location.hash==='#ideas-error')m.textContent=f.dataset.err;
+f.addEventListener('submit',async ev=>{ev.preventDefault();if(f.idea.value.trim().length<3){m.textContent=f.dataset.short;f.idea.focus();return}
+b.disabled=true;m.textContent=f.dataset.sending;try{const r=await fetch(f.action,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
+body:JSON.stringify(Object.fromEntries(new FormData(f)))});const j=await r.json().catch(()=>({}));if(r.ok&&j.ok){m.textContent=f.dataset.ok;f.idea.value='';f.name.value=''}else m.textContent=f.dataset.err}
+catch(e){m.textContent=f.dataset.err}b.disabled=false})})()</script></body></html>
