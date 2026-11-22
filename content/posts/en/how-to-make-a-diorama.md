@@ -1,4 +1,5 @@
 ---
+key: how-to-make-a-diorama
 title: "How to Make a Diorama: A Step-by-Step Guide for Beginners"
 seo_title: "How to Make a Diorama (Step-by-Step Beginner Guide) | ArchDioramas"
 description: "Build your first diorama from plan to finished scene: choosing a scale, making the base, walls and details, painting, weathering and lighting."

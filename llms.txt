@@ -1,12 +1,18 @@
 # ArchDioramas
 
-> ArchDioramas builds miniature dioramas and architectural models and shares free printable plans, laser-cut files (SVG/DXF) and 3D-printable STL models. Videos are relaxing, voice-free ASMR builds on YouTube: https://www.youtube.com/@dioramas-asmr
+> ArchDioramas builds miniature dioramas and architectural models and shares free printable plans, laser-cut files (SVG/DXF) and 3D-printable STL models. Videos are relaxing, voice-free ASMR builds on YouTube: https://www.youtube.com/@dioramas-asmr. Guides are available in English and Spanish.
 
-## Guides
+## Guides (English)
 - [Diorama Scales Explained: 1:12, 1:20, 1:24, 1:35, 1:50, 1:87 and More](https://archdioramas.vercel.app/blog/diorama-scales-explained/): What diorama and model scales mean, how big a person, door or brick is at each scale, and how to choose the right scale for your first build.
 - [How to Make a Diorama: A Step-by-Step Guide for Beginners](https://archdioramas.vercel.app/blog/how-to-make-a-diorama/): Build your first diorama from plan to finished scene: choosing a scale, making the base, walls and details, painting, weathering and lighting.
 - [How to Make Miniature Bricks for Dioramas (5 Methods)](https://archdioramas.vercel.app/blog/how-to-make-miniature-bricks/): Five ways to make realistic miniature brick walls for dioramas and models: engraved foam, printed texture, laser-engraved MDF, 3D-printed sheets and real clay bricks.
 - [Laser-Cut vs 3D-Printed Diorama Parts: Which Should You Use?](https://archdioramas.vercel.app/blog/laser-cut-vs-3d-printed-diorama-parts/): A practical comparison of laser cutting and 3D printing for dioramas and architectural models: which parts suit each, materials, file formats and safety.
+
+## Guías (español)
+- [Cómo hacer ladrillos en miniatura para dioramas (5 métodos)](https://archdioramas.vercel.app/es/blog/como-hacer-ladrillos-miniatura/): Cinco formas de hacer muros de ladrillo realistas para dioramas y maquetas: espuma grabada, textura impresa, MDF grabado con láser, láminas impresas en 3D y ladrillos de barro reales.
+- [Cómo hacer un diorama: guía paso a paso para principiantes](https://archdioramas.vercel.app/es/blog/como-hacer-un-diorama/): Construye tu primer diorama del plano a la escena terminada: elegir la escala, hacer la base, los muros y los detalles, pintar, envejecer e iluminar.
+- [Corte láser vs impresión 3D para dioramas: ¿cuál conviene usar?](https://archdioramas.vercel.app/es/blog/corte-laser-vs-impresion-3d-dioramas/): Comparación práctica entre corte láser e impresión 3D para dioramas y maquetas arquitectónicas: qué piezas conviene hacer con cada uno, materiales, formatos de archivo y seguridad.
+- [Escalas para dioramas explicadas: 1:12, 1:20, 1:24, 1:35, 1:50, 1:87 y más](https://archdioramas.vercel.app/es/blog/escalas-para-dioramas/): Qué significan las escalas de dioramas y maquetas, cuánto mide una persona, una puerta o un ladrillo en cada escala y cómo elegir la escala para tu primera construcción.
 
 ## Site
 - [Free plans](https://archdioramas.vercel.app/#plans): free downloadable plans that match each video

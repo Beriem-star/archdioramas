@@ -1,4 +1,5 @@
 ---
+key: diorama-scales-explained
 title: "Diorama Scales Explained: 1:12, 1:20, 1:24, 1:35, 1:50, 1:87 and More"
 seo_title: "Diorama Scales Explained (with Size Chart) | ArchDioramas"
 description: "What diorama and model scales mean, how big a person, door or brick is at each scale, and how to choose the right scale for your first build."

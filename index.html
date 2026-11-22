@@ -168,7 +168,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <a class="logo" href="#top" aria-label="ArchDioramas home"><span class="a">arch</span><span class="b">DIORAMAS</span></a>
     <nav class="links" aria-label="Main">
       <a href="#plans" data-i18n="navPlans">Free plans</a>
-      <a href="/blog/" data-i18n="navBlog">Guides</a>
+      <a href="/blog/" id="blogLink" data-i18n="navBlog">Guides</a>
       <a href="#support" data-i18n="navCoffee">Support</a>
       <a href="https://www.youtube.com/@dioramas-asmr">YouTube</a>
       <button class="lang" id="langBtn" type="button" aria-label="Cambiar idioma / Change language"><span data-l="en">EN</span><span data-l="es">ES</span></button>
@@ -411,6 +411,7 @@ let walletIndex = 0;
 function applyLang(){
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent = t(el.dataset.i18n); });
+  document.getElementById('blogLink').href = lang==='es' ? '/es/blog/' : '/blog/';
   renderPlans();
   document.getElementById('net').textContent = WALLETS[walletIndex][lang];
   if(current) document.getElementById('mTitle').textContent = (current[lang]||current.en).title;

@@ -1,4 +1,5 @@
 ---
+key: laser-cut-vs-3d-printed-diorama-parts
 title: "Laser-Cut vs 3D-Printed Diorama Parts: Which Should You Use?"
 seo_title: "Laser Cutting vs 3D Printing for Dioramas | ArchDioramas"
 description: "A practical comparison of laser cutting and 3D printing for dioramas and architectural models: which parts suit each, materials, file formats and safety."

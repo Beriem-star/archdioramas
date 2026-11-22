@@ -1,4 +1,5 @@
 ---
+key: how-to-make-miniature-bricks
 title: "How to Make Miniature Bricks for Dioramas (5 Methods)"
 seo_title: "How to Make Miniature Bricks for Dioramas | ArchDioramas"
 description: "Five ways to make realistic miniature brick walls for dioramas and models: engraved foam, printed texture, laser-engraved MDF, 3D-printed sheets and real clay bricks."
